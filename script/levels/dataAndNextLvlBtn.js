@@ -100,7 +100,7 @@ function saveProgress(data) {
 
 // Получаем текущий уровень из URL
 const currentPage = window.location.pathname;
-const currentLevel = Number(currentPage.match(/\d+/)[0]);
+const currentLevel = Number(currentPage.match(/\d+/)[0] - 1);
 
 // Загружаем прогресс
 function getProgress() {
