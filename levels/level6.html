@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUYUBIKI. 6-й Уровень</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <ul class="header__list">
+                <li class="header__list-item">
+                    <a href="#" class="header__list-link">Мои ачивки</a>
+                </li>
+                <li class="header__list-item">
+                    <a href="../index.html" class="header__list-link"><img src="../images/logo.png" alt=""
+                            class="header__logo-img"></a>
+                </li>
+                <li class="header__list-item">
+                    <a href="#" class="header__list-link">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+                <div class="game-about">
+                    <div class="game-rules">
+                        <!-- Правила также передаются из JS -->
+                        <h3 class="game-rules__title">
+                            Правила игры:
+                        </h3>
+                        <ul class="game-rules__list">
+                            <li class="game-rules__list-item">
+                                <p class="game-rules__list-text game-rules__time">1. Время игры</p>
+                            </li>
+                            <li class="game-rules__list-item">
+                                <p class="game-rules__list-text game__list-clicks">2. Количество кликов</p>
+                            </li>
+                            <li class="game-rules__list-item">
+                                <p class="game-rules__list-text game-rules__best-score">3. Не быть Вовачкой</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="game-timer">
+                        <!-- Остаток времени через JS грузится -->
+                        <p class="game-timer__text">Таймер</p>
+                        <span class="game-timer__start-btn">СТАРТУЕМ</span>
+                    </div>
+                </div>
+                <div class="game-field">
+                    <div class="game-field__icon" style="background-color: aquamarine;">
+                        
+                    </div>
+                </div>
+                <a href="../levels/level7.html" class="next-lvl"></a>
+            </div>
+        </section>
+    </main>
+</body>
+    
+    <script src="../script/levels/dataAndNextLvlBtn.js"></script>
+    <script src="../script/main.js"></script>
+</html>

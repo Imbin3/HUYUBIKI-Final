@@ -1,0 +1,32 @@
+.game-timer{
+    height: 300px;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 1px solid aquamarine;
+    box-shadow: aquamarine 1px 1px 10px;
+    border-radius: 15px;
+
+    &__text{
+        box-shadow: aquamarine 1px 1px 10px;
+        border: 1px solid aquamarine;
+        border-radius: 10px;
+        padding-inline: 20px;
+        padding-block: 10px;
+        font-size: 32px;
+        font-weight: 800;
+    }
+
+    &__start-btn{
+        box-shadow: aquamarine 1px 1px 10px;
+        border: 1px solid aquamarine;
+        border-radius: 10px;
+        padding-inline: 20px;
+        padding-block: 10px;
+        font-weight: 800;
+        cursor: pointer;
+    }
+}

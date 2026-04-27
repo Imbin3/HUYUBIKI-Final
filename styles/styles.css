@@ -1,0 +1,494 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
+  scrollbar-gutter: stable;
+  /**
+    Плавный скролл
+   */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Убирает серую подсветку при тапе на мобильных устройствах (iOS/Android)
+ */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут fill со значением 'none' или начинается с 'url')
+ */
+:where([fill]:not([fill=none],
+[fill^=url])) {
+  fill: currentColor;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут stroke со значением 'none')
+ */
+:where([stroke]:not([stroke=none],
+[stroke^=url])) {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Приведение рамок таблиц в классический 'collapse' вид
+ */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --color-dark: #000;
+  --color-light: #fff;
+  --border-radius: 15px;
+  --font-family-base: 'Nunito Sans', sans-serif;
+  --container-width: 1440px;
+  --container-padding-x: 20px;
+  --section-padding-y: 70px;
+  --input-height: 59px;
+  --button-height: 68px;
+  --transition-duration: 0.2s;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+.hidden-scrollbar {
+  scrollbar-width: none;
+  overflow: -moz-scrollbars-none;
+}
+.hidden-scrollbar::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+body {
+  font-size: clamp(16px, 1.25vw, 18px);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: 1.28;
+  color: var(--color-light);
+  background-color: var(--color-dark);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: clamp(43px, 4.1666666667vw, 60px);
+}
+
+h2 {
+  font-size: clamp(36px, 2.7777777778vw, 40px);
+}
+
+h3 {
+  font-size: clamp(26px, 2.0833333333vw, 30px);
+}
+
+h4 {
+  font-size: clamp(18px, 1.3888888889vw, 20px);
+}
+
+.h1 {
+  font-size: clamp(43px, 4.1666666667vw, 60px);
+}
+
+.h2 {
+  font-size: clamp(36px, 2.7777777778vw, 40px);
+}
+
+.h3 {
+  font-size: clamp(26px, 2.0833333333vw, 30px);
+}
+
+.h4 {
+  font-size: clamp(18px, 1.3888888889vw, 20px);
+}
+
+.header {
+  padding-block: 20px;
+  box-shadow: aquamarine 1px 1px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.header__logo-img {
+  max-width: 75px;
+}
+.header__list {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 100px;
+       column-gap: 100px;
+}
+
+.levels-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+  row-gap: 50px;
+  box-shadow: aqua 1px 1px 10px;
+  border-radius: 20px;
+  padding-block: 20px;
+}
+@media (max-width: 480px) {
+  .levels-selection {
+    row-gap: 20px;
+  }
+}
+.levels-selection__list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 20px;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+}
+@media (max-width: 480px) {
+  .levels-selection__list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    padding: 10px;
+    row-gap: 10px;
+    -moz-column-gap: 20px;
+         column-gap: 20px;
+  }
+}
+.levels-selection__list-link {
+  padding-block: 20px;
+  padding-inline: 50px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-dark);
+  box-shadow: aquamarine 1px 1px 10px;
+  transition: all 0.3s ease-in;
+}
+.levels-selection__list-link.unlocked {
+  background-color: aquamarine;
+}
+.levels-selection__list-link.locked {
+  color: var(--color-light);
+  background-color: rgba(89, 255, 200, 0.123);
+}
+@media (hover: hover) {
+  .levels-selection__list-link.locked:hover {
+    background-color: red;
+    color: var(--color-light);
+    box-shadow: red 1px 1px 10px;
+    cursor: not-allowed;
+  }
+}
+@media (hover: none) {
+  .levels-selection__list-link.locked:active {
+    background-color: red;
+    color: var(--color-light);
+    box-shadow: red 1px 1px 10px;
+    cursor: not-allowed;
+  }
+}
+
+.game-about {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 150px;
+  -moz-column-gap: 300px;
+       column-gap: 300px;
+}
+@media (max-width: 480px) {
+  .game-about {
+    margin-top: 50px;
+    row-gap: 20px;
+    flex-direction: column;
+  }
+}
+
+.game-rules {
+  padding: 30px;
+  border: 1px solid aquamarine;
+  box-shadow: aquamarine 1px 1px 10px;
+  border-radius: 15px;
+}
+.game-rules__title {
+  font-size: 35px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+.game-rules__list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.game-rules__list-item {
+  box-shadow: aquamarine 1px 1px 10px;
+  border-radius: 10px;
+  border: 1px solid aquamarine;
+  padding-inline: 20px;
+  padding-block: 10px;
+}
+
+.game-timer {
+  height: 300px;
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  border: 1px solid aquamarine;
+  box-shadow: aquamarine 1px 1px 10px;
+  border-radius: 15px;
+}
+.game-timer__text {
+  box-shadow: aquamarine 1px 1px 10px;
+  border: 1px solid aquamarine;
+  border-radius: 10px;
+  padding-inline: 20px;
+  padding-block: 10px;
+  font-size: 32px;
+  font-weight: 800;
+}
+.game-timer__start-btn {
+  box-shadow: aquamarine 1px 1px 10px;
+  border: 1px solid aquamarine;
+  border-radius: 10px;
+  padding-inline: 20px;
+  padding-block: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.game-field {
+  border: 1px solid aquamarine;
+  box-shadow: aquamarine 1px 1px 10px;
+  border-radius: 40px;
+  width: 400px;
+  aspect-ratio: 1;
+  margin-top: 150px;
+  position: relative;
+  padding: 20px;
+}
+@media (max-width: 480px) {
+  .game-field {
+    margin-top: 50px;
+  }
+}
+.game-field__icon {
+  position: absolute;
+  width: 80px;
+  aspect-ratio: 1;
+  border-radius: 10px;
+}
+
+.next-lvl {
+  margin-block: 50px;
+  box-shadow: aquamarine 1px 1px 10px;
+  border-radius: 10px;
+}
+.next-lvl.active {
+  border: 1px solid aquamarine;
+  padding-inline: 15px;
+  padding-block: 10px;
+}/*# sourceMappingURL=styles.css.map */

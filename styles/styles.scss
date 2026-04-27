@@ -1,0 +1,15 @@
+@import 
+'normalize',
+'media',  
+'mixins', 
+'variables', 
+'utils', 
+'globals';
+
+    @import
+    'blocks/header',
+    'blocks/levels-selection',
+    'blocks/game-about',
+    'blocks/game-rules',
+    'blocks/game-timer',
+    'blocks/game-field';

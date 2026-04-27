@@ -1,0 +1,27 @@
+.game-rules{
+    padding: 30px;
+    border: 1px solid aquamarine;
+    box-shadow: aquamarine 1px 1px 10px;
+    border-radius: 15px;
+
+    &__title{
+        font-size: 35px;
+        font-weight: 800;
+        margin-bottom: 30px;
+    }
+
+    &__list{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        row-gap: 20px;
+
+        &-item{
+            box-shadow: aquamarine 1px 1px 10px;
+            border-radius: 10px;
+            border: 1px solid aquamarine;
+            padding-inline: 20px;
+            padding-block: 10px;
+        }
+    }
+}
