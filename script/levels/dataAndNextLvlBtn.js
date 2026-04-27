@@ -94,6 +94,9 @@ const gameProgress = [
 
 ]
 
+function getProgress() {
+    return JSON.parse(localStorage.getItem('gameProgress')) || gameProgress;
+}
 const progress = getProgress()
 
 function saveProgress(data) {
@@ -102,12 +105,9 @@ function saveProgress(data) {
 
 // Получаем текущий уровень из URL
 const currentPage = window.location.pathname;
-const currentLevel = Number(currentPage.match(/\d+/)[0] - 1);
+const currentLevel = Number(currentPage.match(/\d+/)[0] );
 
 // Загружаем прогресс
-function getProgress() {
-    return JSON.parse(localStorage.getItem('gameProgress')) || gameProgress;
-}
 
 let currentLevelData = progress.find(item => item.levelNum === currentLevel)
 
