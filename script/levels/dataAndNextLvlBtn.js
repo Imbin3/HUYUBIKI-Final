@@ -94,6 +94,8 @@ const gameProgress = [
 
 ]
 
+const progress = getProgress()
+
 function saveProgress(data) {
     localStorage.setItem('gameProgress', JSON.stringify(data));
 }
@@ -107,7 +109,6 @@ function getProgress() {
     return JSON.parse(localStorage.getItem('gameProgress')) || gameProgress;
 }
 
-const progress = getProgress()
 let currentLevelData = progress.find(item => item.levelNum === currentLevel)
 
 function nextLvlBtnActive () {
