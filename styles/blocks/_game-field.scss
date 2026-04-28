@@ -8,7 +8,7 @@
     position: relative;
     padding: 20px;
 
-    @include mobile-s{
+    @include mobile{
         margin-top: 50px;
         width: 360px;
     }

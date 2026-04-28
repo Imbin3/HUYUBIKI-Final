@@ -318,7 +318,7 @@ h4 {
   -moz-column-gap: 100px;
        column-gap: 100px;
 }
-@media (max-width: 400px) {
+@media (max-width: 767px) {
   .header__list {
     -moz-column-gap: 50px;
          column-gap: 50px;
@@ -336,7 +336,7 @@ h4 {
   border-radius: 20px;
   padding-block: 20px;
 }
-@media (max-width: 400px) {
+@media (max-width: 767px) {
   .levels-selection {
     row-gap: 20px;
   }
@@ -349,7 +349,7 @@ h4 {
   -moz-column-gap: 50px;
        column-gap: 50px;
 }
-@media (max-width: 400px) {
+@media (max-width: 767px) {
   .levels-selection__list {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -482,7 +482,7 @@ h4 {
   position: relative;
   padding: 20px;
 }
-@media (max-width: 400px) {
+@media (max-width: 767px) {
   .game-field {
     margin-top: 50px;
     width: 360px;

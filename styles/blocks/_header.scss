@@ -14,7 +14,7 @@
         align-items: center;    
         column-gap: 100px; 
 
-        @include mobile-s{
+        @include mobile{
             column-gap: 50px;
         }
 
