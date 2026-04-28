@@ -53,7 +53,7 @@
                 color: var(--color-light );
                 background-color: rgba(89, 255, 200, 0.123);
                 
-                @include hover{
+                @include hover {
                     background-color: red;
                     color: var(--color-light);
                     box-shadow: red 1px 1px 10px;
