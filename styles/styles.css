@@ -408,7 +408,7 @@ h4 {
   -moz-column-gap: 300px;
        column-gap: 300px;
 }
-@media (max-width: 400px) {
+@media (max-width: 767px) {
   .game-about {
     margin-top: 50px;
     row-gap: 20px;
