@@ -38,6 +38,11 @@
             color: var(--color-dark);
             box-shadow: aquamarine 1px 1px 10px;
             transition: all .3s ease-in;
+
+            @include mobile{
+                padding-inline: 25px;
+                padding-block: 15px;
+            }
             
             &.unlocked{
                 background-color: aquamarine;

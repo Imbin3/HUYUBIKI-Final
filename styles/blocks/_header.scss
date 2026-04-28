@@ -14,5 +14,9 @@
         align-items: center;    
         column-gap: 100px; 
 
+        @include mobile-s{
+            column-gap: 50px;
+        }
+
     }
 }

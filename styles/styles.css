@@ -318,6 +318,12 @@ h4 {
   -moz-column-gap: 100px;
        column-gap: 100px;
 }
+@media (max-width: 400px) {
+  .header__list {
+    -moz-column-gap: 50px;
+         column-gap: 50px;
+  }
+}
 
 .levels-selection {
   display: flex;
@@ -330,7 +336,7 @@ h4 {
   border-radius: 20px;
   padding-block: 20px;
 }
-@media (max-width: 480px) {
+@media (max-width: 400px) {
   .levels-selection {
     row-gap: 20px;
   }
@@ -343,7 +349,7 @@ h4 {
   -moz-column-gap: 50px;
        column-gap: 50px;
 }
-@media (max-width: 480px) {
+@media (max-width: 400px) {
   .levels-selection__list {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -363,6 +369,12 @@ h4 {
   color: var(--color-dark);
   box-shadow: aquamarine 1px 1px 10px;
   transition: all 0.3s ease-in;
+}
+@media (max-width: 767px) {
+  .levels-selection__list-link {
+    padding-inline: 25px;
+    padding-block: 15px;
+  }
 }
 .levels-selection__list-link.unlocked {
   background-color: aquamarine;
@@ -396,7 +408,7 @@ h4 {
   -moz-column-gap: 300px;
        column-gap: 300px;
 }
-@media (max-width: 480px) {
+@media (max-width: 400px) {
   .game-about {
     margin-top: 50px;
     row-gap: 20px;
@@ -470,9 +482,10 @@ h4 {
   position: relative;
   padding: 20px;
 }
-@media (max-width: 480px) {
+@media (max-width: 400px) {
   .game-field {
     margin-top: 50px;
+    width: 360px;
   }
 }
 .game-field__icon {

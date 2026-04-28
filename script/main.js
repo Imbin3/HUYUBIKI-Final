@@ -32,6 +32,7 @@ if (currentLevelData.bestScore !== 0) {
 nextLvlBtnActive()
 
 let score = 0
+let finalScore = 0
 let timerId = null
 
 
@@ -53,7 +54,8 @@ function startTimer(seconds) {
             clearInterval(timerId)
             timerId = null
             gameActive = false
-            let finalScore = score - 1
+            finalScore = score - 1
+            gameTimer.innerHTML = `Ваш счет: ${finalScore}`
             score = 0
             if (finalScore > currentLevelData.bestScore) {
                 progress[currentLevel - 1].bestScore = finalScore
@@ -64,6 +66,7 @@ function startTimer(seconds) {
                 progress[currentLevel - 1].isLevelCompleted = true
                 saveProgress(progress)
             }
+            finalScore = 0
             
             if (currentLevelData.bestScore !== 0) {
                 gameBestScore.innerHTML = `3. Лучший результат: ${progress[currentLevel - 1].bestScore}`
@@ -71,8 +74,7 @@ function startTimer(seconds) {
             
             nextLvlBtnActive()
             console.log(score)
-            gameTimer.innerHTML = `Ваш счет: ${finalScore}`
-
+            
         }
     }, 1000)
 }
@@ -80,8 +82,9 @@ function startTimer(seconds) {
 
 startGameBtn.addEventListener('click', function () {
     startTimer(currentLevelData.gameTime)
-    game()
 })
+
+game()
 
 function game() {
     gameIcon.addEventListener('click', () => {
@@ -91,8 +94,8 @@ function game() {
         let huyubikColorR = Math.floor(Math.random() * 256)
         let huyubikColorG = Math.floor(Math.random() * 256)
         let huyubikColorB = Math.floor(Math.random() * 256)
-        let huyubikTop = Math.floor(Math.random() * 300)
-        let huyubikLeft = Math.floor(Math.random() * 300)
+        let huyubikTop = Math.floor(Math.random() * 260)
+        let huyubikLeft = Math.floor(Math.random() * 260)
         let huyubikW = russelCrasava(currentLevelData.sizeMin, currentLevelData.sizeTop)
 
         gameIcon.innerHTML = icons[russelCrasava(0, icons.length - 1)]
