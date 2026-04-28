@@ -103,9 +103,8 @@ const gameProgress = [
 
 ]
 
-const localProgress = getProgress()
+const localProgress = getProgress() || gameProgress
 
-saveProgress(gameProgress)
 
 function getProgress() {
     return JSON.parse(localStorage.getItem('gameProgress')) || gameProgress
